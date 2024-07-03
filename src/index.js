@@ -3,7 +3,7 @@ import TodoList from "./todoList";
 
 const firstTodoList = new TodoList("First Todo List");
 
-const todo1 = new TodoItem("Einkaufen", "Milch, Brot, Eier kaufen", new Date("2025-12-31"), "High");
+const todo1 = new TodoItem("Einkaufen", "Milch, Brot, Eier kaufen", new Date("2024-07-03"), "High", "14:20");
 const todo2 = new TodoItem("Sport machen", "Eine Stunde joggen im Park", new Date("2025-12-30"), "Medium");
 const todo3 = new TodoItem("Hausputz", "Badezimmer und Küche putzen", new Date("2025-01-15"), "Low");
 const todo4 = new TodoItem("Geburtstagsgeschenk besorgen", "Geschenk für Freundin kaufen", new Date("2025-02-10"), "High");
@@ -41,7 +41,7 @@ firstTodoList.displayFinishedTodos();
 
 firstTodoList.editTodoItemTitle(todo4, "Complete Project Presentation");
 firstTodoList.editTodoItemDescription(todo4, "Prepare slides and practice speech");
-firstTodoList.editTodoItemDueDate(todo4, new Date("2022-12-15"));
+firstTodoList.editTodoItemDueDate(todo4, new Date("2024-07-04"));
 firstTodoList.editTodoItemPriority(todo4, "low");
 firstTodoList.displayTodos();
 

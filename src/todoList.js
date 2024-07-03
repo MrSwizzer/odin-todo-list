@@ -13,11 +13,11 @@ class TodoList {
     displayTodos() {
         console.log(this.title);
         console.log(this.todos);
-        //this.todos.forEach((todo, index) => {
-        //    console.log(`Todo ${index + 1}:`);
-        //    todo.displayInfo();
-        //    console.log('----------------------');
-        //});
+        this.todos.forEach((todo, index) => {
+            console.log(`Todo ${index + 1}:`);
+            todo.displayInfo();
+            console.log('----------------------');
+        });
     }
 
     findTodoIndex(todoItem) {
@@ -50,6 +50,11 @@ class TodoList {
 
     displayFinishedTodos() {
         console.log(this.finishedTodos);
+        this.finishedTodos.forEach((todo, index) => {
+            console.log(`Todo ${index + 1}:`);
+            todo.displayInfo();
+            console.log('----------------------');
+        });
     }
 
     editTodoItemTitle(todoItem, newTitle) {

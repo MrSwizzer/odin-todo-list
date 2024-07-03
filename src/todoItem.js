@@ -1,6 +1,8 @@
+import { format, differenceInDays, differenceInHours, differenceInMinutes } from "date-fns";
+
 class TodoItem {
 
-    constructor(title, description, dueDate, priority) {
+    constructor(title, description, dueDate, priority, dueTime = "12:00") {
         if (typeof title !== "string" || title === "") {
             throw new Error("Title has to be a not empty string")
         }
@@ -19,14 +21,44 @@ class TodoItem {
 
         this.title = title;
         this.description = description;
-        this.dueDate = dueDate;
+
+        if (dueTime !== null && dueTime !== "") {
+            const timeRegex = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
+            if (!timeRegex.test(dueTime)) {
+                throw new Error('Due time must be in HH:mm format (24-hour clock)');
+            }
+            this.dueDate = new Date(dueDate.toDateString() + " " + dueTime);
+        } else {
+            this.dueDate = new Date(dueDate.toDateString() + " 12:00");
+        }
+
         this.priority = priority;
+    }
+
+    calculateTimeUntilDueDate() {
+        const currentDate = new Date();
+        const daysUntilDue = differenceInDays(this.dueDate, currentDate);
+        const hoursUntilDue = differenceInHours(this.dueDate, currentDate);
+        const minutesUntilDue = differenceInMinutes(this.dueDate, currentDate);
+
+        if (daysUntilDue > 0) {
+            return `${daysUntilDue} days`;
+        } else if (hoursUntilDue >= 24) {
+            return `${Math.floor(hoursUntilDue / 24)} days`;
+        } else if (hoursUntilDue > 0) {
+            return `${hoursUntilDue} hours`;
+        } else if (minutesUntilDue >= 60) {
+            return `${Math.floor(minutesUntilDue / 60)} hours`;
+        } else {
+            return `${minutesUntilDue} minutes`;
+        }
     }
 
     displayInfo() {
         console.log(`Title: ${this.title}`);
         console.log(`Description: ${this.description}`);
-        console.log(`Due Date: ${this.dueDate}`);
+        console.log(`Due Date: ${format(this.dueDate, 'MM/dd/yyyy')}`);
+        console.log(`Time until Due Date: ${this.calculateTimeUntilDueDate()}`);
         console.log(`Priority: ${this.priority}`);
     }
 }
