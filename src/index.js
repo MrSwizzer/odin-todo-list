@@ -89,7 +89,7 @@ class TodoList {
     editTodoItemTitle(todoItem, newTitle) {
         const index = this.findTodoIndex(todoItem);
         if (index !== -1) {
-            if (typeof newTitletitle === "string" && title !== "") {
+            if (typeof newTitle === "string" && newTitle !== "") {
                 this.todos[index].title = newTitle;
                 console.log('Todo title updated successfull');
             } else {
@@ -189,6 +189,6 @@ firstTodoList.displayFinishedTodos();
 firstTodoList.editTodoItemTitle(todo4, "Complete Project Presentation");
 firstTodoList.editTodoItemDescription(todo4, "Prepare slides and practice speech");
 firstTodoList.editTodoItemDueDate(todo4, new Date("2022-12-15"));
-firstTodoList.editTodoItemPriority(todo4, "skr");
+firstTodoList.editTodoItemPriority(todo4, "low");
 firstTodoList.displayTodos();
 
