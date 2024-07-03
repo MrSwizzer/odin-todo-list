@@ -21,6 +21,7 @@ class TodoList {
     constructor(title) {
         this.title = title;
         this.todos = [];
+        this.finishedTodos = [];
     }
 
     addTodoItem(todoItem) {
@@ -38,17 +39,30 @@ class TodoList {
     }
 
     deleteTodoItem(todoItem) {
-        if (this.todos) {
-            const index = this.todos.findIndex(todo => todo === todoItem);
-            if (index !== -1) {
-                this.todos.splice(index, 1);
-                console.log('Todo got deleted.');
-            } else {
-                console.log("Couldn't find Todo.");
-            }
+        const index = this.todos.findIndex(todo => todo === todoItem);
+        if (index !== -1) {
+            this.todos.splice(index, 1);
+            console.log('Todo got deleted.');
         } else {
-            console.log('TodoList is empty.');
+            error.log("Couldn't find Todo.");
         }
+
+    }
+
+    markTodoItemFinished(todoItem) {
+        const index = this.todos.findIndex(todo => todo === todoItem);
+        const finishedTodo = this.todos[index];
+        if (index !== -1) {
+            this.todos.splice(index, 1);
+            this.finishedTodos.push(finishedTodo);
+            console.log('Todo got deleted.');
+        } else {
+            error.log("Couldn't find Todo.");
+        }
+    }
+
+    displayFinishedTodos () {
+        console.log(this.finishedTodos);
     }
 }
 
@@ -84,3 +98,7 @@ secondTodoList.displayTodos();
 secondTodoList.deleteTodoItem(todo9);
 secondTodoList.deleteTodoItem(todo6);
 secondTodoList.displayTodos();
+
+firstTodoList.markTodoItemFinished(todo3);
+firstTodoList.displayTodos();
+firstTodoList.displayFinishedTodos();
