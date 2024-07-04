@@ -41,7 +41,7 @@ firstTodoList.displayFinishedTodos();
 
 firstTodoList.editTodoItemTitle(todo4, "Complete Project Presentation");
 firstTodoList.editTodoItemDescription(todo4, "Prepare slides and practice speech");
-firstTodoList.editTodoItemDueDate(todo4, new Date("2024-07-04"));
+firstTodoList.editTodoItemDueDate(todo4, new Date("2024-07-03"));
 firstTodoList.editTodoItemPriority(todo4, "low");
 firstTodoList.displayTodos();
 

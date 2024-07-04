@@ -43,14 +43,14 @@ class TodoItem {
 
         if (daysUntilDue > 0) {
             return `${daysUntilDue} days`;
-        } else if (hoursUntilDue >= 24) {
-            return `${Math.floor(hoursUntilDue / 24)} days`;
         } else if (hoursUntilDue > 0) {
             return `${hoursUntilDue} hours`;
-        } else if (minutesUntilDue >= 60) {
-            return `${Math.floor(minutesUntilDue / 60)} hours`;
-        } else {
+        } else if (minutesUntilDue >= 0) {
             return `${minutesUntilDue} minutes`;
+        } else if (hoursUntilDue > -24 && hoursUntilDue < 0) {
+            return `${hoursUntilDue} hours`;
+        } else {
+            return `${daysUntilDue} days`;
         }
     }
 
