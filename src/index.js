@@ -1,5 +1,6 @@
 import TodoItem from "./todoItem";
 import TodoList from "./todoList";
+import {displayTodoList} from "./domHandler";
 
 const firstTodoList = new TodoList("First Todo List");
 
@@ -45,3 +46,4 @@ firstTodoList.editTodoItemDueDate(todo4, new Date("2024-07-03"));
 firstTodoList.editTodoItemPriority(todo4, "low");
 firstTodoList.displayTodos();
 
+displayTodoList(firstTodoList);
