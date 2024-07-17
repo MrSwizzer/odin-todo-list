@@ -50,3 +50,11 @@ todoLists[0].displayTodos();
 
 const todoListSelectionWrapper = document.querySelector(".todoListSelectionWrapper");
 displayTodoListSelection(todoLists, todoListSelectionWrapper);
+
+//ToDo Change List to re-render when changed title / duedate
+// Add a way to add Todos
+// Add a way to delete Todos
+// Add a way to markfinish Todos
+// Add a way to display finished Todos
+// Style
+//  Style detail Section
