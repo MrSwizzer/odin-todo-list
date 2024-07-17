@@ -42,18 +42,11 @@ todoLists[0].markTodoItemFinished(todo8);
 todoLists[0].displayTodos();
 todoLists[0].displayFinishedTodos();
 
-todoLists[0].editTodoItemTitle(todo4, "Complete Project Presentation");
-todoLists[0].editTodoItemDescription(todo4, "Prepare slides and practice speech");
-todoLists[0].editTodoItemDueDate(todo4, new Date("2024-07-03"));
-todoLists[0].editTodoItemPriority(todo4, "low");
+todo4.editTitle("Yellow");
+todo4.editDescription("Moin");
+todo4.editDueDate(new Date("2024-07-18"));
+todo4.editPriority("low");
 todoLists[0].displayTodos();
-
-console.log(todoLists[0].title);
-
-
-const todosWrapper = document.querySelector(".todosWrapper");
-/* displayTodoList(todoLists[0]); */
 
 const todoListSelectionWrapper = document.querySelector(".todoListSelectionWrapper");
 displayTodoListSelection(todoLists, todoListSelectionWrapper);
-
