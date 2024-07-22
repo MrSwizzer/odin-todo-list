@@ -1,6 +1,6 @@
 import TodoItem from "./todoItem";
 import TodoList from "./todoList";
-import { displayTodoList, displayTodoListSelection } from "./domHandler";
+import { reRenderUI, addTodos } from "./domHandler";
 
 const todoLists = [];
 
@@ -48,8 +48,18 @@ todo4.editDueDate(new Date("2024-07-18"));
 todo4.editPriority("low");
 todoLists[0].displayTodos();
 
-const todoListSelectionWrapper = document.querySelector(".todoListSelectionWrapper");
-displayTodoListSelection(todoLists, todoListSelectionWrapper);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const todoListSelectionWrapper = document.querySelector(".todoListSelectionWrapper");
+
+    // Initial render of the todo list selection menu
+    reRenderUI(todoLists, todoListSelectionWrapper);
+
+    // Setup event listeners for adding todos
+    addTodos(todoLists);
+})
+
+export { todoLists };
 
 //ToDo Change List to re-render when changed title / duedate
 // Add a way to add Todos
@@ -58,3 +68,4 @@ displayTodoListSelection(todoLists, todoListSelectionWrapper);
 // Add a way to display finished Todos
 // Style
 //  Style detail Section
+// Add a way to add Todos Lists

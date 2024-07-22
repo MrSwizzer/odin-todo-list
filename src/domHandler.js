@@ -1,7 +1,22 @@
 import { format } from "date-fns";
+import TodoItem from "./todoItem";
+
+// Function to re-render the Todo list and selection menu
+function reRenderUI(todoLists, targetElement) {
+  // Clear the target element
+  targetElement.textContent = "";
+
+  // Re-render the todo list selection menu
+  renderTodoListSelectMenu(todoLists, targetElement);
+
+  // Optionally, re-render the summary of the first todo list
+  /* const todosWrapper = document.createElement("div");
+  targetElement.appendChild(todosWrapper);
+  renderTodoListSummary(todoLists[0], todosWrapper); */
+}
 
 // Function to create a summary view of a todo item
-function createTodoItemSummary(todoItem) {
+function createDetailedTodoView(todoItem) {
   // Create expand button for the todo item
   const expandTodoButton = document.createElement("button");
   expandTodoButton.classList.add("expandTodoButton");
@@ -22,7 +37,7 @@ function createTodoItemSummary(todoItem) {
 
   // Event listener to toggle details when the button is clicked
   expandTodoButton.addEventListener("click", () => {
-    toggleTodoDetails(todoItem);
+    toggleTodoItemDetailsVisibility(todoItem);
   });
 
   return expandTodoButton;
@@ -75,6 +90,7 @@ function createTodoItemDetails(todoItem) {
     todoItem.editDescription(todoDescription.value);
     todoItem.editDueDate(new Date(todoDueDate.value));
     todoItem.editPriority(todoPriority.value);
+
   });
 
   // Append input fields and save button to the form
@@ -91,7 +107,7 @@ function createTodoItemDetails(todoItem) {
 }
 
 // Function to toggle display of todo item details
-function toggleTodoDetails(todoItem) {
+function toggleTodoItemDetailsVisibility(todoItem) {
   const detailSection = document.querySelector(".detailSection");
   detailSection.textContent = "";
 
@@ -115,20 +131,21 @@ function toggleTodoDetails(todoItem) {
 }
 
 // Function to display a list of todo items
-function displayTodoList(todoList, targetElement) {
+function renderTodoListSummary(todoList, targetElement) {
   targetElement.textContent = "";
 
   todoList.todos.forEach((todo) => {
-    const todoElement = createTodoItemSummary(todo);
+    const todoElement = createDetailedTodoView(todo);
     targetElement.appendChild(todoElement);
   });
 }
 
 // Function to display a selection of todo lists
-function displayTodoListSelection(todoLists, targetElement) {
+function renderTodoListSelectMenu(todoLists, targetElement) {
   targetElement.textContent = "";
 
   const selection = document.createElement("select");
+  selection.setAttribute("id", "todoListSelection")
   todoLists.forEach((todoList, index) => {
     const option = document.createElement("option");
     option.textContent = `${todoList.title}`;
@@ -139,14 +156,58 @@ function displayTodoListSelection(todoLists, targetElement) {
 
   const todosWrapper = document.createElement("div");
   targetElement.appendChild(todosWrapper);
-  displayTodoList(todoLists[0], todosWrapper);
+  renderTodoListSummary(todoLists[0], todosWrapper);
 
   selection.addEventListener("change", () => {
-    displayTodoList(todoLists[selection.value], todosWrapper);
+    renderTodoListSummary(todoLists[selection.value], todosWrapper);
   });
 }
 
 // Function to add a new todo item
+function addTodos(todoLists) {
+  const addTodoButton = document.querySelector("#addNewTodoButton");
+  const todoForm = document.querySelector("#todoForm");
+
+  addTodoButton.addEventListener("click", () => {
+    if (todoForm.style.display === 'none') {
+      todoForm.style.display = 'block';
+    } else {
+      todoForm.style.display = 'none';
+    }
+  })
+
+  todoForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    const dueDate = new Date(document.getElementById('dueDate').value);
+    const dueTime = document.getElementById('dueTime').value;
+    const priority = document.getElementById('priority').value;
+
+    const selection = document.querySelector("#todoListSelection");
+    const selectedTodoList = todoLists[selection.value];
+
+    // Create a new Todo Item instance with the user input
+    const newTodo = new TodoItem(title, description, dueDate, priority, dueTime);
+
+    // Add the new Todo Item to the Todo List
+    selectedTodoList.addTodoItem(newTodo);
+
+    // Reset the form and hide it
+    todoForm.reset();
+    todoForm.style.display = 'none';
+
+    reRenderUI(todoLists, document.querySelector(".todoListSelectionWrapper"));
+  });
+  
+}
+
+
+function renderNewTodoMenu() {
+  const NewTodoMenuSection = document.createElement("div");
+
+}
 function addNewTodo(todoItem) {
   // Function implementation for adding a new todo item can be added here
 }
@@ -157,4 +218,4 @@ function markTodoCompleted(todoItem) {
 }
 
 // Exporting functions for displaying todo lists and todo list selections
-export { displayTodoList, displayTodoListSelection };
+export { reRenderUI, addTodos };
