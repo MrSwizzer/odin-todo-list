@@ -1,39 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo List</title>
 </head>
-<body>
 
-    <div class="todosWrapper">
+<body>
+    <div class="todoListSection">
+        <h2>Todo Lists</h2>
+        <button id="showFinishedTodosButton">Show Finished Todos</button>
+        <div class="todoListContainer"></div>
+    </div>
+
+    <div class="todosSection">
+        <h2>Todos</h2>
+        <div id="todosContainer"></div>
     </div>
 
     <div class="detailSection">
-    </div>
-
-    <div class="todoListSelectionWrapper">
+        <h2>Details</h2>
+        <div id="todoDetails"></div>
+    
     </div>
 
     <button id="addNewTodoButton">Add Todo</button>
     <form id="todoForm" style="display: none;">
-        <label for="title">Title:</label>
-        <input type="text" id="title" required><br>
-        <label for="description">Description:</label>
-        <input type="text" id="description"><br>
-        <label for="dueDate">Due Date:</label>
-        <input type="date" id="dueDate" required><br>
-        <label for="dueTime">Due Time (optional):</label>
-        <input type="time" id="dueTime"><br>
-        <label for="priority">Priority:</label>
-        <select id="priority" required>
+        <label for="formTitle">Title:</label>
+        <input type="text" id="formTitle" required><br>
+        <label for="formDescription">Description:</label>
+        <input type="text" id="formDescription"><br>
+        <label for="formDueDate">Due Date:</label>
+        <input type="date" id="formDueDate" required><br>
+        <label for="formDueTime">Due Time (optional):</label>
+        <input type="time" id="formDueTime"><br>
+        <label for="formPriority">Priority:</label>
+        <select id="formPriority" required>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
         </select><br>
         <button type="submit">Submit</button>
     </form>
-
+    <script src="path/to/your/compiled/js/index.js"></script>
 </body>
+
 </html>

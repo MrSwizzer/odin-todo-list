@@ -1,6 +1,6 @@
 import TodoItem from "./todoItem";
 import TodoList from "./todoList";
-import { reRenderUI, addTodos } from "./domHandler";
+import { initializeApp } from "./domHandler";
 
 const todoLists = [];
 
@@ -16,7 +16,7 @@ todoLists[0].addTodoItem(todo1);
 todoLists[0].addTodoItem(todo2);
 todoLists[0].addTodoItem(todo3);
 todoLists[0].addTodoItem(todo4);
-todoLists[0].displayTodos();
+//todoLists[0].displayTodos();
 
 const secondTodoList = new TodoList("Daily Todo List");
 todoLists.push(secondTodoList);
@@ -32,34 +32,23 @@ todoLists[1].addTodoItem(todo6);
 todoLists[1].addTodoItem(todo7);
 todoLists[1].addTodoItem(todo8);
 todoLists[1].addTodoItem(todo9);
-todoLists[1].displayTodos();
+//todoLists[1].displayTodos();
 todoLists[1].deleteTodoItem(todo9);
 todoLists[1].deleteTodoItem(todo6);
-todoLists[1].displayTodos();
+//todoLists[1].displayTodos();
 
 todoLists[0].markTodoItemFinished(todo3);
 todoLists[0].markTodoItemFinished(todo8);
-todoLists[0].displayTodos();
-todoLists[0].displayFinishedTodos();
+//todoLists[0].displayTodos();
+//todoLists[0].displayFinishedTodos();
 
 todo4.editTitle("Yellow");
 todo4.editDescription("Moin");
 todo4.editDueDate(new Date("2024-07-18"));
 todo4.editPriority("low");
-todoLists[0].displayTodos();
+//todoLists[0].displayTodos();
 
-
-document.addEventListener("DOMContentLoaded", () => {
-    const todoListSelectionWrapper = document.querySelector(".todoListSelectionWrapper");
-
-    // Initial render of the todo list selection menu
-    reRenderUI(todoLists, todoListSelectionWrapper);
-
-    // Setup event listeners for adding todos
-    addTodos(todoLists);
-})
-
-export { todoLists };
+initializeApp(todoLists);
 
 //ToDo Change List to re-render when changed title / duedate
 // Add a way to add Todos
