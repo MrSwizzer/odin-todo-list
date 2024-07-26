@@ -4,6 +4,8 @@ import TodoList from "./todoList";
 // Global variables to keep track of the current TodoList and TodoItem
 let currentTodoList = null;
 let currentTodoItem = null;
+let currentTodoLists;
+
 
 // Creates a DOM element for a single Todo item
 function createTodoElement(todoItem, onClick) {
@@ -215,9 +217,40 @@ document.getElementById("todoForm").onsubmit = (e) => {
     }
 };
 
+// New event listeners for adding and deleting todo lists
+document.getElementById("addNewTodoListButton").addEventListener("click", () => {
+    document.getElementById("newTodoListForm").style.display = "block";
+});
+
+document.getElementById("saveTodoListButton").addEventListener("click", () => {
+    const title = document.getElementById("todoListTitle").value;
+    if (title) {
+        const newTodoList = new TodoList(title);
+        currentTodoLists.push(newTodoList);
+        displayTodoLists(currentTodoLists);
+        document.getElementById("newTodoListForm").style.display = "none";
+    }
+});
+
+document.getElementById("cancelTodoListButton").addEventListener("click", () => {
+    document.getElementById("newTodoListForm").style.display = "none";
+});
+
+document.getElementById("deleteCurrentTodoListButton").addEventListener("click", () => {
+    if (currentTodoList) {
+        const index = currentTodoLists.indexOf(currentTodoList);
+        if (index !== -1) {
+            currentTodoLists.splice(index, 1);
+            currentTodoList = currentTodoLists.length > 0 ? currentTodoLists[0] : null;
+            displayTodoLists(currentTodoLists);
+        }
+    }
+});
+
 // Initializes the application with the provided todo lists
 function initializeApp(todoLists) {
     displayTodoLists(todoLists);
+    currentTodoLists = todoLists;
 }
 
 export { initializeApp, displayTodos, displayTodoDetails, displayTodoLists };
