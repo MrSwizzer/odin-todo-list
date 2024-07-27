@@ -49,12 +49,3 @@ todo4.editPriority("low");
 //todoLists[0].displayTodos();
 
 initializeApp(todoLists);
-
-//ToDo Change List to re-render when changed title / duedate
-// Add a way to add Todos
-// Add a way to delete Todos
-// Add a way to markfinish Todos
-// Add a way to display finished Todos
-// Style
-//  Style detail Section
-// Add a way to add Todos Lists

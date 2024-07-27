@@ -1,10 +1,11 @@
 import TodoItem from "./todoItem";
 import TodoList from "./todoList";
+import { saveToLocalStorage, getTodoListsFromLocalStorage, saveTodoListToLocalStorage } from "./storage";
 
 // Global variables to keep track of the current TodoList and TodoItem
 let currentTodoList = null;
 let currentTodoItem = null;
-let currentTodoLists;
+let currentTodoLists = [];
 
 
 // Creates a DOM element for a single Todo item
@@ -228,7 +229,9 @@ document.getElementById("saveTodoListButton").addEventListener("click", () => {
         const newTodoList = new TodoList(title);
         currentTodoLists.push(newTodoList);
         displayTodoLists(currentTodoLists);
+        displayTodos(newTodoList);
         document.getElementById("newTodoListForm").style.display = "none";
+        saveTodoListToLocalStorage(newTodoList);
     }
 });
 
@@ -249,8 +252,13 @@ document.getElementById("deleteCurrentTodoListButton").addEventListener("click",
 
 // Initializes the application with the provided todo lists
 function initializeApp(todoLists) {
-    displayTodoLists(todoLists);
-    currentTodoLists = todoLists;
+    const savedTodoLists = getTodoListsFromLocalStorage();
+    if (savedTodoLists.length > 0) {
+        currentTodoLists = savedTodoLists;
+    } else {
+        currentTodoLists = todoLists;
+    }
+    displayTodoLists(currentTodoLists);
 }
 
 export { initializeApp, displayTodos, displayTodoDetails, displayTodoLists };

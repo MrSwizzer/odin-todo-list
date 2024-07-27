@@ -1,3 +1,4 @@
+import { saveTodoListToLocalStorage } from "./storage";
 class TodoList {
 
     constructor(title) {
@@ -10,6 +11,7 @@ class TodoList {
     addTodoItem(todoItem) {
         // Add a new TodoItem to the list
         this.todos.push(todoItem);
+        saveTodoListToLocalStorage(this);
     }
 
     displayTodos() {
@@ -33,6 +35,7 @@ class TodoList {
         const index = this.findTodoIndex(todoItem);
         if (index !== -1) {
             this.todos.splice(index, 1);
+            saveTodoListToLocalStorage(this);
             console.log('Todo deleted.');
         } else {
             console.error("Can't find Todo.");
@@ -46,6 +49,7 @@ class TodoList {
         if (index !== -1) {
             this.todos.splice(index, 1);
             this.finishedTodos.push(finishedTodo);
+            saveTodoListToLocalStorage(this);
             console.log('Todo marked as finished.');
         } else {
             console.error("Can't find Todo.");
