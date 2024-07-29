@@ -1,0 +1,154 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Three columns for each section */
+    grid-template-areas: 
+        "todoListSection todosSection detailSection";
+    gap: 10px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    height: 100vh; /* Ensure the body takes the full viewport height */
+}
+
+/* Sidebar for To-Do Lists */
+.todoListSection {
+    grid-area: todoListSection;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: calc(100vh - 40px); /* Full height minus padding */
+}
+
+/* Container for To-Do Items */
+.todosSection {
+    grid-area: todosSection;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: calc(100vh - 40px); /* Full height minus padding */
+}
+
+/* To-Do Item Styling */
+.todo-item {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.todo-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Detail Section */
+.detailSection {
+    grid-area: detailSection;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden by default */
+    height: calc(100vh - 40px); /* Full height minus padding */
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+}
+
+form input, form textarea, form select {
+    margin-top: 5px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#todoDetailForm button {
+    background-color: #28a745;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#todoDetailForm button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Button Styling */
+button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#closeDetailSectionButton, #deleteTodoButton {
+    margin-top: 10px;
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#closeDetailSectionButton:hover, #deleteTodoButton:hover {
+    background-color: #c82333;
+}
+
+#showFinishedTodosButton, #addNewTodoButton, #addNewTodoListButton {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#showFinishedTodosButton:hover, #addNewTodoButton:hover, #addNewTodoListButton:hover {
+    background-color: #0056b3;
+}
+
+/* Form Containers */
+#todoForm, #newTodoListForm {
+    display: none;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

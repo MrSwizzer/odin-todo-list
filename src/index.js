@@ -1,3 +1,6 @@
+import "./normalize.css";
+import "./style.css";
+
 import TodoItem from "./todoItem";
 import TodoList from "./todoList";
 import { initializeApp } from "./domHandler";

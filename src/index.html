@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="normalize.css"> -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <title>ToDo List</title>
 </head>
 
@@ -25,16 +27,15 @@
 
     <div class="todosSection">
         <h2>Todos</h2>
+        <button id="addNewTodoButton">Add Todo</button>
         <div id="todosContainer"></div>
     </div>
 
     <div class="detailSection">
         <h2>Details</h2>
         <div id="todoDetails"></div>
-
     </div>
 
-    <button id="addNewTodoButton">Add Todo</button>
     <form id="todoForm" style="display: none;">
         <label for="formTitle">Title:</label>
         <input type="text" id="formTitle" required><br>
