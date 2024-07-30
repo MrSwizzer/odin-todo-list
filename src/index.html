@@ -29,6 +29,24 @@
         <h2>Todos</h2>
         <button id="addNewTodoButton">Add Todo</button>
         <div id="todosContainer"></div>
+
+        <form id="todoForm" style="display: none;">
+            <label for="formTitle">Title:</label>
+            <input type="text" id="formTitle" required><br>
+            <label for="formDescription">Description:</label>
+            <input type="text" id="formDescription"><br>
+            <label for="formDueDate">Due Date:</label>
+            <input type="date" id="formDueDate" required><br>
+            <label for="formDueTime">Due Time (optional):</label>
+            <input type="time" id="formDueTime"><br>
+            <label for="formPriority">Priority:</label>
+            <select id="formPriority" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select><br>
+            <button type="submit">Submit</button>
+        </form>
     </div>
 
     <div class="detailSection">
@@ -36,23 +54,7 @@
         <div id="todoDetails"></div>
     </div>
 
-    <form id="todoForm" style="display: none;">
-        <label for="formTitle">Title:</label>
-        <input type="text" id="formTitle" required><br>
-        <label for="formDescription">Description:</label>
-        <input type="text" id="formDescription"><br>
-        <label for="formDueDate">Due Date:</label>
-        <input type="date" id="formDueDate" required><br>
-        <label for="formDueTime">Due Time (optional):</label>
-        <input type="time" id="formDueTime"><br>
-        <label for="formPriority">Priority:</label>
-        <select id="formPriority" required>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-        </select><br>
-        <button type="submit">Submit</button>
-    </form>
+    
 </body>
 
 </html>

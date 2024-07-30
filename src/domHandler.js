@@ -65,7 +65,7 @@ function displayTodos(todoList, showFinished) {
     container.innerHTML = ""; // Clear previous todos
 
     // Filter todos based on whether finished items should be displayed
-    const todos = showFinished ? todoList.finishedTodos : todoList.todos.filter(todo => !todo.finished);
+    const todos = showFinished ? todoList.finishedTodos : todoList.todos;
     todos.forEach(todoItem => {
         // Create a DOM element for each todo item and add it to the container
         const todoElement = createTodoElement(todoItem, displayTodoDetails);
