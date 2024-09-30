@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="normalize.css"> -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>ToDo List</title>
+<script defer src="main.js"></script></head>
+
+<body>
+    <div class="todoListSection">
+        <h2>Todo Lists</h2>
+        <button id="showFinishedTodosButton">Show Finished Todos</button>
+        <div class="todoListContainer"></div>
+        <button id="addNewTodoListButton">Add New Todo List</button>
+        <button id="deleteCurrentTodoListButton">Delete Todo List</button>
+
+        <div id="newTodoListForm" style="display:none;">
+            <label for="todoListTitle">Enter the title for the new Todo List:</label>
+            <input type="text" id="todoListTitle" />
+            <button id="saveTodoListButton">Save</button>
+            <button id="cancelTodoListButton">Cancel</button>
+        </div>
+    </div>
+
+    <div class="todosSection">
+        <h2>Todos</h2>
+        <button id="addNewTodoButton">Add Todo</button>
+        <div id="todosContainer"></div>
+
+        <form id="todoForm" style="display: none;">
+            <label for="formTitle">Title:</label>
+            <input type="text" id="formTitle" required><br>
+            <label for="formDescription">Description:</label>
+            <input type="text" id="formDescription"><br>
+            <label for="formDueDate">Due Date:</label>
+            <input type="date" id="formDueDate" required><br>
+            <label for="formDueTime">Due Time (optional):</label>
+            <input type="time" id="formDueTime"><br>
+            <label for="formPriority">Priority:</label>
+            <select id="formPriority" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="detailSection">
+        <h2>Details</h2>
+        <div id="todoDetails"></div>
+    </div>
+
+    
+</body>
+
+</html>
